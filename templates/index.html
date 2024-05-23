@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="navbar-brand">Realtime Detection</h1>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="upload-container">
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" id="video-file" name="video" accept="video/mp4">
+            <label for="video-file" class="btn-1">📁 Select file</label>
+            <span id="file-label"></span>
+            <button type="submit" style="margin-left: 20px;">Upload Video</button>
+        </form>
+    </div>
+
+    {% if video_uploaded %}
+    <div id="video_feed_container">
+        <img id="video_feed" src="{{ url_for('video_feed') }}" width="70%" oncontextmenu="return false;">
+    </div>
+    {% else %}
+    <div class="message">
+        <p>Nothing has been uploaded yet.</p>
+    </div>
+    {% endif %}
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append('video', document.getElementById('video-file').files[0]);
+
+            fetch('/', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    alert('Video uploaded successfully!');
+                    window.location.reload();  // Refresh the page after successful upload
+                } else {
+                    alert('Failed to upload video.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+
+
+        document.getElementById('video-file').addEventListener('change', function () {
+            var fileName = this.files[0].name;
+            var label = document.getElementById('file-label');
+            label.textContent = fileName;
+        });
+
+
+    </script>
+</body>
+
+</html>

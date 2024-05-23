@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='analytics.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="navbar-brand">Realtime Detection</h1>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 align="center">Detected Objects Statistics</h2>
+
+    <div class="analytics-container">
+        {% if data_count == 0 %}
+        <div class="nothing-to-display">
+            <h6>No statistical data available at this time</h6>
+        </div>
+        {% else %}
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Datetime</th>
+                    <th>Name</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+
+</html>

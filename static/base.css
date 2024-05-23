@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Nexa';
+    src: url('fonts/Nexa-Heavy.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Nexa', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+}

@@ -1,0 +1,72 @@
+.upload-container {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+
+[type="file"] + label {
+    border: 1px solid #9147ff;
+    border-radius: 5px;
+    width: 150px;
+    color: black;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding: 5px;
+    position: relative;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-1 {
+    transition: none;
+}
+
+.btn-1:hover {
+    top: 2px;
+}
+
+
+button {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 33px;
+    background-color: #9147ff;
+    color: white;
+    padding: 0 10px;
+}
+
+button:hover {
+    background-color: #772ce8;
+}
+
+.message {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#video_feed_container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

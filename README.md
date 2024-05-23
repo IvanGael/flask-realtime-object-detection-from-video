@@ -10,4 +10,5 @@ A simple flask web app that performs real-time object detection in video using Y
 - Live video feed
 - Real-time object detection and bounding boxes
 - Confidence score display
+- Sqlite database to log detections
 - Analytics

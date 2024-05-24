@@ -2,8 +2,7 @@ Real-Time Object Detection :
 
 A simple flask web app that performs real-time object detection in video using YOLOv5 ultralytics. 
 
-
-![Demo](demo.gif)
+<img src="demo.gif" width="100%">
 
 
 #### Features

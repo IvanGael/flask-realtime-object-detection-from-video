@@ -7,6 +7,8 @@
     <title>Analytics</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='analytics.css') }}">
+    <!-- https://plotly.com/javascript/bar-charts/ -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +22,7 @@
         </div>
     </nav>
 
-    <h2 align="center">Detected Objects Statistics</h2>
+    <h3 align="center">Detected Objects Statistics</h3>
 
     <div class="analytics-container">
         {% if data_count == 0 %}
@@ -48,6 +50,49 @@
         </table>
         {% endif %}
     </div>
+
+    <h3 align="center">Chart</h3>
+
+    <div class="chart-container">
+        {% if data_count == 0 %}
+        <div class="nothing-to-display">
+            <h6>No chart data available at this time</h6>
+        </div>
+        {% else %}
+        <div id="chart"></div>
+        {% endif %}
+    </div>
+
+    <h3 align="center">Download Reports</h3>
+
+    <div class="download-container" >
+        <a href="/download/csv" style="margin-right: 8px;">Download CSV</a>
+        <a href="/download/excel" style="margin-right: 8px;">Download Excel</a>
+        <a href="/download/pdf" >Download PDF</a>
+    </div>
+
+    <script>
+        fetch('/analytics/data')
+            .then(response => response.json())
+            .then(data => {
+                const timestamps = data.map(item => item[0]);
+                const names = data.map(item => item[1]);
+                const counts = data.map(item => item[2]);
+
+                const plotData = [
+                    {
+                        x: timestamps,
+                        y: names,
+                        type: 'bar',
+                        marker: {
+                            color: '#9147ff'
+                        }
+                    }
+                ];
+
+                Plotly.newPlot('chart', plotData);
+            });
+    </script>
 </body>
 
 </html>

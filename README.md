@@ -15,6 +15,16 @@ A simple flask web app that performs real-time object detection in video using Y
 - Chart
 - Reports generation and export in various formats (PDF, CSV, Excel).
 
+
+#### Requirements
+- opencv
+- ultralytics
+- torch
+- flask
+- reportlab
+- pandas
+- xlsxwriter
+
 #### To run
 ```
 py app.py
